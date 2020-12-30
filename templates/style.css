@@ -1,0 +1,26 @@
+h1 {
+    color: black;
+}
+
+body {
+    display: block;
+    margin-right: 200px;
+    margin-bottom: 200px;
+}
+
+.container_fluid {
+    border: 1px solid black;
+    color: black;
+}
+
+.btn,
+.btn-primary,
+.btn-primary:hover,
+.btn-primary:active,
+.btn-primary:visited,
+.btn-primary:focus {
+    background-color: solid black;
+    border-color: solid orange;
+}
+
+table { background-color: darkgray; }

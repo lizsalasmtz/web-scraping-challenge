@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mission to Mars</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head> 
+
+<body class="text-white" style="background-color: #b86d29;">
+    <div class="container">
+        <!-- Jumbotron -->
+        <div class="jumbotron text-center" style="background-image: url(https://mars.nasa.gov/system/news_items/main_images/8707_PIA23764-16.jpg); height: 550px; background-position: center; background-size: cover;">
+            <h1 class="display-1"><b>Mission to Mars</b></h1>
+            <!-- non-bootstrap button <p align="center"><a href="/scrape" ><button class=grey style="height:50px;width:150px">Refresh Page</button></a></p>-->
+            <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Refresh Page</a></p> 
+        </div>
+    </div>
+
+    <!-- latest headline from NASA -->
+    <div class="container">
+        <div class="row" id="mars-news">
+            <div class="media">
+                <div class="media-body">
+                    <h3>Latest Mars News</h3>
+                    <h4 style="color: white">{{mars.news_title}}</h4>
+                    <p style="color: white">{{mars.news_description}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+   
+    <!-- Featured image from JPL Mars Space Images -->
+    <div class="container">
+        <div class="row" id="mars-featured-image">
+            <div class="col-lg-10 col-md-10 col-sm-12">
+            <h3>Featured Mars Image</h3>
+              <img src="{{mars.featured_image | default('static/images/error.png', true) }}" class="img-responsive" style="max-width:100%; max-height: auto;" alt="Mars Featured Image"/>
+            </div>
+          </div>
+    </div>
+    <br>
+
+    <!-- Mars Facts -->
+    <div class="container">
+        <div class="row" id="mars-facts">
+            <div class="col-md-12">
+                <h3>Mars Facts</h3>
+                {{mars.facts | safe}}
+            </div>
+        </div>
+    </div>
+    <br>
+
+    <!-- Mars Hemispheres -->
+    <h3 style="padding-top: 10px; margin-top: 10px; text-align: center;">Mars Hemispheres</h3>
+    <div class="card-deck">
+        <hr>
+        <div class="col-md-12">
+            <div class="row" id="mars-hemispheres">
+                {% for hemisphere in mars.hemispheres %}
+                <div class="col-md-6">
+                    <div class="card text-white bg-danger" style="margin: 30px;">
+                        <!-- If Images are False/None/Non-Existent, Then Default to Error Message -->
+                        <img class="card-img-top" src="file:///C:/Users/dcorey/Documents/GitHub/magic/Web%20Scraping%20Homework%20-%20Mission%20to%20Mars/templates/%7B%7Bhemisphere.img_url%20%7C%20default(&#39;static/images/error.png&#39;,%20true)%7D%7D" alt="...">
+                        <div class="card-body">
+                            <p class="card-text">{{hemisphere.title}}</p>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JavaScript -->
+    <!-- jQuery, Popper.js & Bootstrap JS -->
+    <script src="./Mission to Mars_files/jquery-3.3.1.slim.min.js.download" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="./Mission to Mars_files/popper.min.js.download" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="./Mission to Mars_files/bootstrap.min.js.download" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+</body>
+</html>
